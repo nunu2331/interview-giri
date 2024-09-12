@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deret Angka Berkelipatan 5</title>
+</head>
+<body>
+    <h2>Deret Angka Berkelipatan 5 (50-100)</h2>
+    <button onclick="tampilkanDeretAngka()">Tampilkan Deret</button>
+
+    <ul id="output-deret"></ul>
+
+    <script>
+        function tampilkanDeretAngka() {
+            const ul = document.getElementById("output-deret");
+            ul.innerHTML = "";
+
+            for (let angka = 50; angka <= 100; angka += 5) {
+                let keterangan;
+
+                if (angka <= 60) {
+                    keterangan = "KURANG";
+                } else if (angka > 60 && angka <= 70) {
+                    keterangan = "CUKUP";
+                } else if (angka > 70 && angka <= 80) {
+                    keterangan = "BAIK";
+                } else {
+                    keterangan = "LUAR BIASA";
+                }
+
+                let li = document.createElement("li");
+                li.textContent = `${angka} - ${keterangan}`;
+                ul.appendChild(li);
+            }
+        }
+    </script>
+</body>
+</html>

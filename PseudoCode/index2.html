@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deret Fibonacci</title>
+</head>
+<body>
+    <h2>Deret Bilangan Fibonacci</h2>
+    <button onclick="tampilkanFibonacci()">Tampilkan Fibonacci</button>
+    
+    <p id="output-fibonacci"></p>
+
+    <script>
+        function tampilkanFibonacci() {
+            let fib = [0, 1];
+            let output = '0 1 ';
+
+            for (let i = 2; i < 20; i++) {
+                fib[i] = fib[i - 1] + fib[i - 2];
+                output += fib[i] + ' ';
+            }
+
+            document.getElementById("output-fibonacci").textContent = output.trim();
+        }
+    </script>
+</body>
+</html>

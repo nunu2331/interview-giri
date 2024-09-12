@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segitiga Bintang</title>
+    <style>
+        .bintang {
+            font-family: monospace;
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+    <h2>Tampilan Segitiga Bintang</h2>
+
+    <label for="input-x">Masukkan nilai x:</label>
+    <input type="number" id="input-x" min="1" placeholder="Masukkan angka" />
+    <button onclick="tampilkanSegitiga()">Tampilkan Segitiga</button>
+    
+    <div id="output-bintang" class="bintang"></div>
+
+    <script>
+        function tampilkanSegitiga() {
+            const x = parseInt(document.getElementById("input-x").value);
+            let output = '';
+            
+            for (let i = 1; i <= x; i++) {
+                output += '* '.repeat(i) + '\n';
+            }
+
+            document.getElementById("output-bintang").textContent = output;
+        }
+    </script>
+</body>
+</html>
