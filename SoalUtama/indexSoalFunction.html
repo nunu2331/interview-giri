@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JSON Table with Remove Key</title>
+    <script>
+        let data = [];
+
+        function fetchData() {
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "http://jsonplaceholder.typicode.com/posts", true);
+            xhr.onload = function () {
+                if (this.status === 200) {
+                    console.log(JSON.parse(this.responseText));
+                    data = JSON.parse(this.responseText).slice(0, 10);
+                    renderTable(data);
+                }
+            };
+            xhr.send();
+        }
+
+        function renderTable(data) {
+            let tableContent = `<table border='1'><tr><th>ID</th><th>Title</th><th>Body</th></tr>`;
+            data.forEach(post => {
+                tableContent += `<tr><td>${post.id}</td><td>${post.title}</td><td>${post.body ? post.body : ''}</td></tr>`;
+            });
+            tableContent += "</table>";
+            document.getElementById("tableContainer").innerHTML = tableContent;
+        }
+
+        function removeBodyKey() {
+            data.forEach(post => delete post.body);
+            renderTable(data);
+        }
+
+        window.onload = function () {
+            fetchData();
+        };
+    </script>
+</head>
+
+<body>
+    <div id="tableContainer"></div>
+    <button onclick="removeBodyKey()">Remove Body Column</button>
+</body>
+
+</html>

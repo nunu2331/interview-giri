@@ -1,0 +1,17 @@
+
+<script>
+    async function hashString() {
+      const text = "12092024yudhapriaifabula";
+      const encoder = new TextEncoder();
+      const data = encoder.encode(text);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      console.log(hashHex);
+    }
+  
+    window.onload = function () {
+      hashString();
+    };
+  </script>
+  

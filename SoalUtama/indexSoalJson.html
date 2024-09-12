@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Change Name Example</title>
+  <script>
+    let jsonData = [
+      { "id": 1, "name": "Joko wi", "age": 30, "email": "joko@example.com" },
+      { "id": 2, "name": "Jihan Audi", "age": 25, "email": "jihauw@example.com" },
+      { "id": 3, "name": "Bas Uki", "age": 25, "email": "ba2uki@example.com" },
+      { "id": 4, "name": "Jujur Makmur", "age": 25, "email": "jurmar@example.com" },
+      { "id": 5, "name": "Agus Ghosling", "age": 25, "email": "aguscelalu@example.com" }
+    ];
+
+    let currentIndex = 0;
+
+    function changeLabel() {
+      currentIndex = (currentIndex + 1) % jsonData.length;
+      document.getElementById("nameLabel").innerText = jsonData[currentIndex].name;
+    }
+    
+    window.onload = function() {
+      document.getElementById("nameLabel").innerText = jsonData[0].name;
+    };
+  </script>
+</head>
+<body>
+  <h3>Label: <span id="nameLabel"></span></h3>
+  <button onclick="changeLabel()">Change Name</button>
+</body>
+</html>

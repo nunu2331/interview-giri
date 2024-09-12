@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+        #logoutBtn, #welcomeLabel {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="username" placeholder="Enter username" />
+    <br /><br />
+
+    <input type="password" id="password" placeholder="Enter password" />
+    <br /><br />
+
+    <button id="loginBtn" onclick="login()">Login</button>
+    <br /><br />
+
+    <h3 id="welcomeLabel">Selamat datang, <span id="userWelcome"></span></h3>
+
+    <button id="logoutBtn" onclick="logout()">Logout</button>
+
+    <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username && password) {
+                localStorage.setItem("username", username);
+                localStorage.setItem("password", password);
+
+                document.getElementById("userWelcome").innerText = username;
+
+                document.getElementById("username").style.display = "none";
+                document.getElementById("password").style.display = "none";
+                document.getElementById("loginBtn").style.display = "none";
+
+                document.getElementById("welcomeLabel").style.display = "block";
+                document.getElementById("logoutBtn").style.display = "block";
+            } else {
+                alert("Silakan masukkan username dan password!");
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem("username");
+            localStorage.removeItem("password");
+
+            document.getElementById("username").style.display = "block";
+            document.getElementById("password").style.display = "block";
+            document.getElementById("loginBtn").style.display = "block";
+
+            document.getElementById("welcomeLabel").style.display = "none";
+            document.getElementById("logoutBtn").style.display = "none";
+
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+        }
+        window.onload = function() {
+            var storedUsername = localStorage.getItem("username");
+
+            if (storedUsername) {
+                document.getElementById("userWelcome").innerText = storedUsername;
+
+                document.getElementById("username").style.display = "none";
+                document.getElementById("password").style.display = "none";
+                document.getElementById("loginBtn").style.display = "none";
+
+                document.getElementById("welcomeLabel").style.display = "block";
+                document.getElementById("logoutBtn").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
